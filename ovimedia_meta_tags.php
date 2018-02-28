@@ -34,24 +34,20 @@ if ( ! class_exists( 'ovimedia_meta_tags' ) )
             ?>
 
             <!-- BEGIN Metadata Ovimedia Meta Tags plugin -->
-              <?php if($description != "") { ?>
-            <meta name="description" content=" <?php echo $description; ?>" />;
-            <?php }    
-                if($keywords != "") { ?>
-            <meta name="keywords" content="<?php echo $keywords; ?>" />;
-            <?php } ?>
+            <?php if($description != ""){ ?><meta name="description" content=" <?php echo $description; ?>" /><?php } ?>
+
+            <?php if($keywords != ""){?><meta name="keywords" content="<?php echo $keywords; ?>" /><?php } ?>
+
+            <?php if($description != ""){ ?><meta name="dcterms:description" content=" <?php echo $description; ?>" /><?php } ?>
+
+            <?php if($keywords != ""){?><meta name="dcterms:subject" content="<?php echo $keywords; ?>" /><?php } ?>
+            
             <meta name="dcterms:title" content="<?php echo $post->post_title; ?>" />
             <meta name="dcterms:identifier" content="<?php echo get_permalink(); ?>" />
             <meta name="dcterms:creator" content="<?php echo get_the_author(); ?>" />
             <meta name="dcterms:created" content="<?php echo $post->post_date; ?>" />
             <meta name="dcterms:available" content="<?php echo $post->post_date; ?>" />
             <meta name="dcterms:modified" content="<?php echo $post->post_modified; ?>" />
-            <?php if($description != "") { ?>
-            <meta name="dcterms:description" content=" <?php echo $description; ?>" />;
-            <?php }    
-                if($keywords != "") { ?>
-            <meta name="dcterms:subject" content="<?php echo $keywords; ?>" />;
-            <?php } ?>
             <meta name="dcterms:language" content="<?php echo get_bloginfo("language");  ?>" />
             <meta name="dcterms:publisher" content="<?php echo get_home_url(); ?>" />
             <meta name="dcterms:rights" content="<?php echo get_home_url(); ?>" />
