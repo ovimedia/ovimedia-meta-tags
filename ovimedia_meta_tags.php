@@ -22,9 +22,9 @@ if ( ! class_exists( 'ovimedia_meta_tags' ) )
         {
             global $post;
 
-            $type = ucfirst($post->post_type);
+	    $type = "Article";
 
-            if($type == "Post") $type = "Article";
+            if($post->post_type == "post") $type = "Post";
 
             $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
             $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' );
@@ -57,7 +57,7 @@ if ( ! class_exists( 'ovimedia_meta_tags' ) )
             <link rel="publisher" type="text/html" title="<?php echo get_bloginfo(); ?>" href="<?php echo get_home_url(); ?>" />
             <link rel="author" type="text/html" title="<?php echo get_the_author(); ?>" href="<?php echo get_home_url(); ?>author/<?php echo get_the_author(); ?>/" />
             <script type="application/ld+json">
-            {"@context":"http:\/\/schema.org","@type":"<? echo $type; ?>",
+            {"@context":"http:\/\/schema.org","@type":"<?php echo $type; ?>",
             "publisher":{"@type":"Organization","name":"<?php echo get_bloginfo(); ?>",
             "description":<?php echo json_encode(get_bloginfo('description')); ?>,
             "url":<?php echo json_encode(get_home_url()); ?>,"sameAs":[]},
